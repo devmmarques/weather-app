@@ -6,6 +6,7 @@ target 'weather-app' do
   use_frameworks!
 
   # Pods for weather-app
+  pod 'Alamofire', '4.9.1'
 
   target 'weather-appTests' do
     inherit! :search_paths
