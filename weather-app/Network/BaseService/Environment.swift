@@ -18,9 +18,9 @@ extension Environment {
     var baseURLString: String {
         switch configuration {
         case .development:
-            return "api.openweathermap.org"
+            return "https://api.openweathermap.org"
         default:
-            return "api.openweathermap.org"
+            return "https://api.openweathermap.org"
         }
     }
     
