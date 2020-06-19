@@ -1,3 +1,40 @@
-PODFILE CHECKSUM: 26dd21a05e4622fc45233bc65ae6bf962b43a2de
+PODS:
+  - Alamofire (4.9.1)
+  - Nimble (8.0.8)
+  - OHHTTPStubs/Core (9.0.0)
+  - OHHTTPStubs/Default (9.0.0):
+    - OHHTTPStubs/Core
+    - OHHTTPStubs/JSON
+    - OHHTTPStubs/NSURLSession
+    - OHHTTPStubs/OHPathHelpers
+  - OHHTTPStubs/JSON (9.0.0):
+    - OHHTTPStubs/Core
+  - OHHTTPStubs/NSURLSession (9.0.0):
+    - OHHTTPStubs/Core
+  - OHHTTPStubs/OHPathHelpers (9.0.0)
+  - OHHTTPStubs/Swift (9.0.0):
+    - OHHTTPStubs/Default
+  - Quick (2.2.0)
+
+DEPENDENCIES:
+  - Alamofire (= 4.9.1)
+  - Nimble
+  - OHHTTPStubs/Swift
+  - Quick
+
+SPEC REPOS:
+  trunk:
+    - Alamofire
+    - Nimble
+    - OHHTTPStubs
+    - Quick
+
+SPEC CHECKSUMS:
+  Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
+  Nimble: 2da33c44adfde49552d4a6b3ef16039a45bf8dca
+  OHHTTPStubs: cb29d2a9d09a828ecb93349a2b0c64f99e0db89f
+  Quick: 7fb19e13be07b5dfb3b90d4f9824c855a11af40e
+
+PODFILE CHECKSUM: 17db615edfcac8c7dc9609fdc9e8a62e3f0a2aeb
 
 COCOAPODS: 1.9.1
