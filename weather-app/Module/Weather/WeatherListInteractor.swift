@@ -1,10 +1,15 @@
 import UIKit
 
 class WeatherListInteractor: WeatherListInputInteractorProtocol {
-    
+
     weak var presenter: WeatherListOutPutInteractorProtocol?
     let service: WeatherServiceProtocol
     
+    var listWeather: [ListCellType<Weather>] = [] {
+        didSet {
+            self.presenter?.showWeather()
+        }
+    }
     
     init(service: WeatherServiceProtocol = WeatherService()) {
         self.service = service
@@ -20,5 +25,13 @@ class WeatherListInteractor: WeatherListInputInteractorProtocol {
                 print(error)
             }
         }
+    }
+    
+    func countListWeather() -> Int {
+        return self.listWeather.count
+    }
+    
+    func getWeather(with index: Int) -> ListCellType<Weather> {
+        return self.listWeather[index]
     }
 }

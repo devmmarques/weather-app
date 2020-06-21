@@ -2,6 +2,8 @@ import UIKit
 
 final class WeatherListViewController: UIViewController {
     
+    var presenter: WeatherListPresenterProtocol?
+    
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero)
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -10,12 +12,17 @@ final class WeatherListViewController: UIViewController {
         return tableView
     }()
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        WeatherListWireframe.createWeatherListModule(controller: self)
+        self.presenter?.viewDidLoad()
         self.setupViews()
         self.setupTableView()
         self.setupUI()
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
     }
     
     private func setupTableView() {
@@ -29,6 +36,13 @@ final class WeatherListViewController: UIViewController {
     }
 }
 
+extension WeatherListViewController: WeatherListViewProtocol {
+    
+    func reloadData() {
+        self.tableView.reloadData()
+    }
+}
+
 
 extension WeatherListViewController: UITableViewDelegate {
     
@@ -38,8 +52,13 @@ extension WeatherListViewController: UITableViewDelegate {
 }
 
 extension WeatherListViewController: UITableViewDataSource {
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return self.presenter?.numberOfSection() ?? 0
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return self.presenter?.numberOfRowsInSection() ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
