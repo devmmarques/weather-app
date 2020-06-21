@@ -10,6 +10,7 @@ enum WebserviceError: Error {
     case forbidden
     case unparseable
     case unknown
+    case empty(EmptyState)
 }
 
 extension WebserviceError: LocalizedError {

@@ -7,13 +7,13 @@ target 'weather-app' do
 
   # Pods for weather-app
   pod 'Alamofire', '4.9.1'
+  pod 'lottie-ios'
 
   target 'weather-appTests' do
     inherit! :search_paths
     pod 'Quick'
     pod 'Nimble'
     pod 'OHHTTPStubs/Swift'
-    
   end
 
   target 'weather-appUITests' do

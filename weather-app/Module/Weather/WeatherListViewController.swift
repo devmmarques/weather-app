@@ -29,6 +29,8 @@ final class WeatherListViewController: UIViewController {
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.tableView.register(WeatherViewCell.self)
+        self.tableView.register(LoadingCell.self)
+        self.tableView.register(ErrorViewCell.self)
     }
     
     private func setupUI() {
@@ -62,9 +64,24 @@ extension WeatherListViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let weather = presenter?.getWeather(with: indexPath.row) else { return UITableViewCell() }
         
-        let cell = tableView.dequeueReusableCell(forIndexPath: indexPath) as WeatherViewCell
-        return cell
+        switch weather {
+        case .loading:
+            let cell = tableView.dequeueReusableCell(forIndexPath: indexPath) as LoadingCell
+            return cell
+        case let .error(error):
+            let cell = tableView.dequeueReusableCell(forIndexPath: indexPath) as ErrorViewCell
+            cell.setupView(error: error) {
+                self.presenter?.viewDidLoad()
+            }
+            return cell
+        case let .cell(weather):
+            let cell = tableView.dequeueReusableCell(forIndexPath: indexPath) as WeatherViewCell
+            print(weather)
+            return cell
+        }
+        
     }
 }
 

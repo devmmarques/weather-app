@@ -16,13 +16,15 @@ class WeatherListInteractor: WeatherListInputInteractorProtocol {
     }
     
     func fetchWeather() {
+        self.listWeather = [.loading];
         self.service.fetchWeather { [weak self] result in
             guard let self = self else { return }
             switch result {
             case let .success(weatherResponse):
                 print(weatherResponse)
+                self.presenter?.showWeather()
             case let .failure(error):
-                print(error)
+                self.listWeather = [.error(error)]
             }
         }
     }
