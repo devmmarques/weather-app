@@ -1,0 +1,9 @@
+"buttonTryAgain" = "Tente novamente";
+"errorInternetDescription" = "Não foi possível carregar a página no momento";
+"errorUnexpectedDescription" = "Não foi possivel carregar a página no momento. Por favor, tente mais tarde.";
+"errorUnexpectedTitle" = "Erro inesperado";
+"errorInternetTitle" = "Sem conexão com internet";
+"errorEmptyStateTitleContact" = "Sem previsão do tempo";
+"errorEmptyStateDescriptionContact" = "Não foi possível encontrar a nenhuma previsão para sua localização.";
+"emptyStateTitleWeather" = "Sem Previsão";
+"emptyStateDescriptionWeather" = "No momento não existe uma previsão de tempo para sua região.";

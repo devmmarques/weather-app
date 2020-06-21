@@ -21,7 +21,7 @@ class WeatherListInteractor: WeatherListInputInteractorProtocol {
             guard let self = self else { return }
             switch result {
             case let .success(weatherResponse):
-                print(weatherResponse)
+                self.listWeather = [.error(.empty(.weather))]
                 self.presenter?.showWeather()
             case let .failure(error):
                 self.listWeather = [.error(error)]

@@ -25,7 +25,8 @@ final class ErrorViewCell: UITableViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.accessibilityIdentifier = "labelTitleError"
         label.textAlignment = .center
-        label.textColor = .white
+        label.textColor = ColorName.grayStrong.color
+        label.font = FontFamily.SFUIText.bold.font(size: 18.0)
         return label
     }()
     
@@ -35,7 +36,8 @@ final class ErrorViewCell: UITableViewCell {
         label.accessibilityIdentifier = "labelDescriptionError"
         label.textAlignment = .center
         label.numberOfLines = 0
-        label.textColor = .white
+        label.textColor = ColorName.grayLight.color
+        label.font = FontFamily.SFUIText.regular.font(size: 12.0)
         label.alpha = 0.7
         return label
     }()
@@ -44,7 +46,8 @@ final class ErrorViewCell: UITableViewCell {
         let button = UIButton(frame: .zero)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.accessibilityIdentifier = "buttonErrorTryAgain"
-        button.backgroundColor = .green
+        button.backgroundColor = ColorName.primaryBlue.color
+        button.setTitle(L10n.buttonTryAgain.uppercased(), for: .normal)
         return button
     }()
     
@@ -67,20 +70,20 @@ final class ErrorViewCell: UITableViewCell {
         
         switch error {
         case .notConnectedToInternet:
-            imageEmptyState.image = UIImage(named: "ic_wireless")
-            titleLabel.text = "Sem conexão com internet"
-            descriptionLabel.text = "Não foi possível carregar a página no momento"
+            imageEmptyState.image = Asset.icWireless.image
+            titleLabel.text = L10n.errorInternetTitle
+            descriptionLabel.text = L10n.errorInternetDescription
             accessibilityIdentifier = "notConnectedToInternetErrorView"
         case let .empty(emptyState):
-            imageEmptyState.image = UIImage(named: "ic_ error_unexpected")
+            imageEmptyState.image = Asset.icEmptyStateWeather.image
             titleLabel.text = emptyState.title
             descriptionLabel.text = emptyState.description
             accessibilityIdentifier = "emptyState"
             buttonTryAgain.isHidden = true
         default:
-            titleLabel.text = "Erro inesperado"
-            descriptionLabel.text = "Não foi possivel carregar a página no momento. Por favor, tente mais tarde."
-            imageEmptyState.image = UIImage(named: "ic_ error_unexpected")
+            titleLabel.text = L10n.errorUnexpectedTitle
+            descriptionLabel.text = L10n.errorUnexpectedDescription
+            imageEmptyState.image = Asset.icErrorUnexpected.image
             accessibilityIdentifier = "unexpectedErrorView"
         }
         
@@ -114,8 +117,8 @@ extension ErrorViewCell: CodeViewProtocol {
         
         self.stackViewVertical
             .topAnchor(equalTo: self.imageEmptyState.bottomAnchor, constant: 40.0)
-            .leadingAnchor(equalTo: self.leadingAnchor)
-            .trailingAnchor(equalTo: self.trailingAnchor)
+            .leadingAnchor(equalTo: self.leadingAnchor, constant: 20.0)
+            .trailingAnchor(equalTo: self.trailingAnchor, constant: -20.0)
             .bottomAnchor(equalTo: self.bottomAnchor)
         
         let screen = UIScreen.main.bounds

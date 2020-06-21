@@ -52,6 +52,17 @@
 		B2A93217249FCFBB0033E837 /* loading.json in Resources */ = {isa = PBXBuildFile; fileRef = B2A93216249FCFBB0033E837 /* loading.json */; };
 		B2A93219249FD0990033E837 /* ErrorViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2A93218249FD0990033E837 /* ErrorViewCell.swift */; };
 		B2A9321B249FD1B30033E837 /* EmptyState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2A9321A249FD1B30033E837 /* EmptyState.swift */; };
+		B2A93220249FD6E40033E837 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B2A9321F249FD6E40033E837 /* Localizable.strings */; };
+		B2A93222249FD7320033E837 /* Colors.json in Resources */ = {isa = PBXBuildFile; fileRef = B2A93221249FD7320033E837 /* Colors.json */; };
+		B2A93227249FD91E0033E837 /* SFUIText-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B2A93223249FD8E80033E837 /* SFUIText-Bold.ttf */; };
+		B2A93228249FD91E0033E837 /* SFUIText-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B2A93224249FD8E80033E837 /* SFUIText-Medium.ttf */; };
+		B2A93229249FD91E0033E837 /* SFUIText-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B2A93225249FD8E80033E837 /* SFUIText-Regular.ttf */; };
+		B2A9322A249FD91E0033E837 /* SFUIText-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B2A93226249FD8E80033E837 /* SFUIText-Semibold.ttf */; };
+		B2A9322E249FD96B0033E837 /* swiftgen.yml in Resources */ = {isa = PBXBuildFile; fileRef = B2A9322D249FD96B0033E837 /* swiftgen.yml */; };
+		B2A93234249FD9E20033E837 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2A93230249FD9E20033E837 /* Strings.swift */; };
+		B2A93235249FD9E20033E837 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2A93231249FD9E20033E837 /* Fonts.swift */; };
+		B2A93236249FD9E20033E837 /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2A93232249FD9E20033E837 /* Assets.swift */; };
+		B2A93237249FD9E20033E837 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2A93233249FD9E20033E837 /* Colors.swift */; };
 		DEF4E1749A9D10E2A3052DC7 /* Pods_weather_appTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE7889C5939223E9ED23F51F /* Pods_weather_appTests.framework */; };
 		EED23D8C610A5F429E0993AC /* Pods_weather_app_weather_appUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5E35F8ABEDB325BBF79201F /* Pods_weather_app_weather_appUITests.framework */; };
 /* End PBXBuildFile section */
@@ -130,6 +141,17 @@
 		B2A93216249FCFBB0033E837 /* loading.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = loading.json; sourceTree = "<group>"; };
 		B2A93218249FD0990033E837 /* ErrorViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorViewCell.swift; sourceTree = "<group>"; };
 		B2A9321A249FD1B30033E837 /* EmptyState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyState.swift; sourceTree = "<group>"; };
+		B2A9321F249FD6E40033E837 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		B2A93221249FD7320033E837 /* Colors.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Colors.json; sourceTree = "<group>"; };
+		B2A93223249FD8E80033E837 /* SFUIText-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFUIText-Bold.ttf"; sourceTree = "<group>"; };
+		B2A93224249FD8E80033E837 /* SFUIText-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFUIText-Medium.ttf"; sourceTree = "<group>"; };
+		B2A93225249FD8E80033E837 /* SFUIText-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFUIText-Regular.ttf"; sourceTree = "<group>"; };
+		B2A93226249FD8E80033E837 /* SFUIText-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFUIText-Semibold.ttf"; sourceTree = "<group>"; };
+		B2A9322D249FD96B0033E837 /* swiftgen.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = swiftgen.yml; sourceTree = "<group>"; };
+		B2A93230249FD9E20033E837 /* Strings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
+		B2A93231249FD9E20033E837 /* Fonts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
+		B2A93232249FD9E20033E837 /* Assets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
+		B2A93233249FD9E20033E837 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		FB8D4A44B72E08D2766883D0 /* Pods-weather-app.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-weather-app.debug.xcconfig"; path = "Target Support Files/Pods-weather-app/Pods-weather-app.debug.xcconfig"; sourceTree = "<group>"; };
 		FE7889C5939223E9ED23F51F /* Pods_weather_appTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_weather_appTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -255,6 +277,7 @@
 		B2268BEB249B050E0033F5D4 = {
 			isa = PBXGroup;
 			children = (
+				B2A9322C249FD9630033E837 /* Config */,
 				B2268BF6249B050E0033F5D4 /* weather-app */,
 				B2268C0D249B050F0033F5D4 /* weather-appTests */,
 				B2268C18249B050F0033F5D4 /* weather-appUITests */,
@@ -285,7 +308,6 @@
 				B2268BF7249B050E0033F5D4 /* AppDelegate.swift */,
 				B2268BF9249B050E0033F5D4 /* SceneDelegate.swift */,
 				B2268BFB249B050E0033F5D4 /* ViewController.swift */,
-				B2268C00249B050F0033F5D4 /* Assets.xcassets */,
 				B2268C02249B050F0033F5D4 /* LaunchScreen.storyboard */,
 				B212F81F249C4EAD0097CB63 /* Main.storyboard */,
 				B2268C05249B050F0033F5D4 /* Info.plist */,
@@ -397,6 +419,11 @@
 		B2A93214249FCF9F0033E837 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				B2268C00249B050F0033F5D4 /* Assets.xcassets */,
+				B2A9322F249FD9C60033E837 /* Generated */,
+				B2A9321E249FD6D30033E837 /* String */,
+				B2A9321D249FD6CE0033E837 /* Colors */,
+				B2A9321C249FD6C50033E837 /* Fonts */,
 				B2A93215249FCFA90033E837 /* JSON */,
 			);
 			path = Resources;
@@ -408,6 +435,52 @@
 				B2A93216249FCFBB0033E837 /* loading.json */,
 			);
 			path = JSON;
+			sourceTree = "<group>";
+		};
+		B2A9321C249FD6C50033E837 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				B2A93223249FD8E80033E837 /* SFUIText-Bold.ttf */,
+				B2A93224249FD8E80033E837 /* SFUIText-Medium.ttf */,
+				B2A93225249FD8E80033E837 /* SFUIText-Regular.ttf */,
+				B2A93226249FD8E80033E837 /* SFUIText-Semibold.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		B2A9321D249FD6CE0033E837 /* Colors */ = {
+			isa = PBXGroup;
+			children = (
+				B2A93221249FD7320033E837 /* Colors.json */,
+			);
+			path = Colors;
+			sourceTree = "<group>";
+		};
+		B2A9321E249FD6D30033E837 /* String */ = {
+			isa = PBXGroup;
+			children = (
+				B2A9321F249FD6E40033E837 /* Localizable.strings */,
+			);
+			path = String;
+			sourceTree = "<group>";
+		};
+		B2A9322C249FD9630033E837 /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				B2A9322D249FD96B0033E837 /* swiftgen.yml */,
+			);
+			path = Config;
+			sourceTree = "<group>";
+		};
+		B2A9322F249FD9C60033E837 /* Generated */ = {
+			isa = PBXGroup;
+			children = (
+				B2A93232249FD9E20033E837 /* Assets.swift */,
+				B2A93233249FD9E20033E837 /* Colors.swift */,
+				B2A93231249FD9E20033E837 /* Fonts.swift */,
+				B2A93230249FD9E20033E837 /* Strings.swift */,
+			);
+			path = Generated;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -422,6 +495,7 @@
 				B2268BF1249B050E0033F5D4 /* Frameworks */,
 				B2268BF2249B050E0033F5D4 /* Resources */,
 				032AE5348CFFEAD049F949FC /* [CP] Embed Pods Frameworks */,
+				B2A9322B249FD93F0033E837 /* SwiftGen */,
 			);
 			buildRules = (
 			);
@@ -521,10 +595,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B2A93220249FD6E40033E837 /* Localizable.strings in Resources */,
+				B2A9322E249FD96B0033E837 /* swiftgen.yml in Resources */,
 				B212F821249C4EAD0097CB63 /* Main.storyboard in Resources */,
 				B2268C04249B050F0033F5D4 /* LaunchScreen.storyboard in Resources */,
 				B2A93217249FCFBB0033E837 /* loading.json in Resources */,
 				B2268C01249B050F0033F5D4 /* Assets.xcassets in Resources */,
+				B2A93222249FD7320033E837 /* Colors.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -532,6 +609,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B2A93227249FD91E0033E837 /* SFUIText-Bold.ttf in Resources */,
+				B2A93228249FD91E0033E837 /* SFUIText-Medium.ttf in Resources */,
+				B2A93229249FD91E0033E837 /* SFUIText-Regular.ttf in Resources */,
+				B2A9322A249FD91E0033E837 /* SFUIText-Semibold.ttf in Resources */,
 				B212F82B249C516A0097CB63 /* weather.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -641,6 +722,24 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		B2A9322B249FD93F0033E837 /* SwiftGen */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftGen;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "$PODS_ROOT/SwiftGen/bin/swiftgen config run --config Config/swiftgen.yml\n";
+		};
 		B3D8D177D39571560AB2313A /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -686,6 +785,7 @@
 				B2A93201249FABAC0033E837 /* WeatherListPresenter.swift in Sources */,
 				B2268C2A249B063D0033F5D4 /* Webservice.swift in Sources */,
 				B2268C30249B06E60033F5D4 /* Environment.swift in Sources */,
+				B2A93235249FD9E20033E837 /* Fonts.swift in Sources */,
 				B2A931FF249FA6DC0033E837 /* UIViewExtensions.swift in Sources */,
 				B2268BFA249B050E0033F5D4 /* SceneDelegate.swift in Sources */,
 				B212F838249C61A90097CB63 /* Identifier.swift in Sources */,
@@ -697,7 +797,10 @@
 				B2A93205249FABE70033E837 /* WeatherListWireframe.swift in Sources */,
 				B2A93203249FABCD0033E837 /* WeatherListInteractor.swift in Sources */,
 				B212F836249C619A0097CB63 /* UIViewConstraintsExtensions.swift in Sources */,
+				B2A93234249FD9E20033E837 /* Strings.swift in Sources */,
 				B2A93209249FAF170033E837 /* WeatherListProtocol.swift in Sources */,
+				B2A93236249FD9E20033E837 /* Assets.swift in Sources */,
+				B2A93237249FD9E20033E837 /* Colors.swift in Sources */,
 				B2268C2E249B06B80033F5D4 /* API.swift in Sources */,
 				B2A9320C249FAFEA0033E837 /* ListCellType.swift in Sources */,
 				B212F83D249C641E0097CB63 /* CodeViewProtocol.swift in Sources */,
