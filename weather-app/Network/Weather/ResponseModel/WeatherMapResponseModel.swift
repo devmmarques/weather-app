@@ -2,12 +2,9 @@ import Foundation
 
 struct WeatherMapResponseModel: Codable {
     
-    let id: Float
-    let name: String
-    let cod: Int
-    let dt: Float
-    let coord: CoordinatesResponseModel
-    let weather: [WeatherResponseModel]
-    let main: MainResponseModel
-    let sys: SysResponseModel
+    let message: String
+    let cod: String
+    let count: Int
+    let list: [WeatherResponseModel]
+    
 }

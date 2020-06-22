@@ -17,11 +17,17 @@ class WeatherListInteractor: WeatherListInputInteractorProtocol {
     
     func fetchWeather() {
         self.listWeather = [.loading];
-        self.service.fetchWeather { [weak self] result in
+        self.service.fetchWeather(parameters: self.getParameters()) { [weak self] result in
             guard let self = self else { return }
             switch result {
             case let .success(weatherResponse):
-                self.listWeather = [.error(.empty(.weather))]
+                if weatherResponse.list.isEmpty {
+                   self.listWeather = [.error(.empty(.weather))]
+                } else {
+                    self.listWeather = weatherResponse.list.map({
+                        return ListCellType.cell(Weather(response: $0))
+                    })
+                }
                 self.presenter?.showWeather()
             case let .failure(error):
                 self.listWeather = [.error(error)]
@@ -35,5 +41,17 @@ class WeatherListInteractor: WeatherListInputInteractorProtocol {
     
     func getWeather(with index: Int) -> ListCellType<Weather> {
         return self.listWeather[index]
+    }
+    
+    private func getParameters() -> [String: Any]? {
+        let apiKey = Environment.current.baseApiKey
+        var parameters = self.getLocationUser()
+        parameters?["appid"] = apiKey
+        parameters?["cnt"] = 50
+        return parameters
+    }
+    
+    private func getLocationUser() -> [String: Any]? {
+        return LocationManager.shared.locationParameters
     }
 }

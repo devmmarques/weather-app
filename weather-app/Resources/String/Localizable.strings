@@ -7,3 +7,4 @@
 "errorEmptyStateDescriptionContact" = "Não foi possível encontrar a nenhuma previsão para sua localização.";
 "emptyStateTitleWeather" = "Sem Previsão";
 "emptyStateDescriptionWeather" = "No momento não existe uma previsão de tempo para sua região.";
+"emptyStateLabel" = "- - -";

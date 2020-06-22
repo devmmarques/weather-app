@@ -12,7 +12,6 @@ final class WeatherViewCell: UITableViewCell {
     private lazy var cityLabel: UILabel = {
         let label = UILabel(frame: .zero)
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Titulo"
         label.font = UIFont.boldSystemFont(ofSize: 24.0)
         return label
     }()
@@ -29,7 +28,6 @@ final class WeatherViewCell: UITableViewCell {
     private lazy var typeWeatherLabel: UILabel = {
         let label = UILabel(frame: .zero)
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Céu aberto"
         label.font = UIFont.systemFont(ofSize: 20.0)
         return label
     }()
@@ -37,7 +35,6 @@ final class WeatherViewCell: UITableViewCell {
     private lazy var minMaxWeatherLable: UILabel = {
         let label = UILabel(frame: .zero)
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Min: 22 Max: 29"
         label.font = UIFont.systemFont(ofSize: 20.0)
         return label
     }()
@@ -45,7 +42,6 @@ final class WeatherViewCell: UITableViewCell {
     private lazy var tempWeatherLabel: UILabel = {
         let label = UILabel(frame: .zero)
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "29º"
         label.font = UIFont.systemFont(ofSize: 20.0)
         return label
     }()
@@ -68,6 +64,12 @@ final class WeatherViewCell: UITableViewCell {
     private func setupUI() {
         self.backgroundColor = .white
         self.containerView.applyShadow(color: .lightGray, opacity: 5, offSet: CGSize(width: -1, height: 1), radius: 3, scale: true)
+    }
+    
+    func setupWeather(weather: Weather) {
+        self.cityLabel.text = weather.name
+        self.typeWeatherLabel.text = weather.weather.first?.description ?? L10n.emptyStateLabel
+        self.minMaxWeatherLable.text = "Min \(weather.main.tempMin.convertTemp(from: .kelvin, to: .celsius))  Max \(weather.main.tempMax.convertTemp(from: .kelvin, to: .celsius))"
     }
 }
 
