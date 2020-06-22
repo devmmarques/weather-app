@@ -31,6 +31,8 @@ internal enum L10n {
   internal static let errorUnexpectedDescription = L10n.tr("Localizable", "errorUnexpectedDescription")
   /// Erro inesperado
   internal static let errorUnexpectedTitle = L10n.tr("Localizable", "errorUnexpectedTitle")
+  /// Desafio LuizaLabs
+  internal static let titleNavigationWeather = L10n.tr("Localizable", "titleNavigationWeather")
 }
 // swiftlint:enable explicit_type_interface function_parameter_count identifier_name line_length
 // swiftlint:enable nesting type_body_length type_name

@@ -21,10 +21,23 @@ final class WeatherListPresenter: WeatherListPresenterProtocol {
     func getWeather(with index: Int) -> ListCellType<Weather>? {
         return self.interactor?.getWeather(with: index)
     }
+    
+    func getUnitTemperature() -> UnitTemperature {
+        return self.interactor?.typeUnitTemperature ?? UnitTemperature.celsius
+    }
+    
+    func changeUnitTemperature() {
+        self.interactor?.changeUnitTemperature()
+    }
 }
 
 extension WeatherListPresenter: WeatherListOutPutInteractorProtocol {
     func showWeather() {
         self.view?.reloadData()
     }
+    
+    func showUnitTemperature() {
+        self.view?.showUnitTemperature()
+    }
+    
 }

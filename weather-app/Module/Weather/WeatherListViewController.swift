@@ -26,15 +26,36 @@ final class WeatherListViewController: UIViewController {
     }
     
     private func setupTableView() {
-        self.tableView.delegate = self
         self.tableView.dataSource = self
         self.tableView.register(WeatherViewCell.self)
         self.tableView.register(LoadingCell.self)
         self.tableView.register(ErrorViewCell.self)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setupNavigationBar(with: .default)
+        
+        self.changeIconNavigationButtonRight()
+    }
+    
     private func setupUI() {
         self.view.backgroundColor = .clear
+        self.title = L10n.titleNavigationWeather
+    }
+    
+    
+    private func setupUnitTemperature() {
+        self.presenter?.changeUnitTemperature()
+        
+    }
+    
+    private func changeIconNavigationButtonRight () {
+        if let unitTemp = self.presenter?.getUnitTemperature() {
+            setupNavigationButtonRightWeather(iconType: unitTemp) {
+                self.setupUnitTemperature()
+            }
+        }
     }
 }
 
@@ -43,13 +64,10 @@ extension WeatherListViewController: WeatherListViewProtocol {
     func reloadData() {
         self.tableView.reloadData()
     }
-}
-
-
-extension WeatherListViewController: UITableViewDelegate {
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+    func showUnitTemperature() {
+        self.reloadData()
+        self.changeIconNavigationButtonRight()
     }
 }
 
@@ -78,7 +96,10 @@ extension WeatherListViewController: UITableViewDataSource {
             return cell
         case let .cell(weather):
             let cell = tableView.dequeueReusableCell(forIndexPath: indexPath) as WeatherViewCell
-            cell.setupWeather(weather: weather, outputTempType: .celsius)
+            if let unitTemp = self.presenter?.getUnitTemperature() {
+              cell.setupWeather(weather: weather, outputTempType: unitTemp)
+            }
+            
             return cell
         }
         

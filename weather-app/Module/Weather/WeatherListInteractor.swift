@@ -1,8 +1,9 @@
 import UIKit
 
 class WeatherListInteractor: WeatherListInputInteractorProtocol {
-
+    
     weak var presenter: WeatherListOutPutInteractorProtocol?
+    var typeUnitTemperature: UnitTemperature = .celsius
     let service: WeatherServiceProtocol
     
     var listWeather: [ListCellType<Weather>] = [] {
@@ -53,5 +54,18 @@ class WeatherListInteractor: WeatherListInputInteractorProtocol {
     
     private func getLocationUser() -> [String: Any]? {
         return LocationManager.shared.locationParameters
+    }
+    
+    func changeUnitTemperature() {
+        switch self.typeUnitTemperature {
+        case .celsius:
+            self.typeUnitTemperature = .fahrenheit
+        case .fahrenheit:
+            self.typeUnitTemperature = .celsius
+        default:
+            self.typeUnitTemperature = .celsius
+        }
+        
+        self.presenter?.showUnitTemperature()
     }
 }

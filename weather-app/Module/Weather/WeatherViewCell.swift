@@ -79,7 +79,7 @@ final class WeatherViewCell: UITableViewCell {
         self.typeWeatherLabel.text = weather.weather.first?.description ?? L10n.emptyStateLabel
         self.minMaxWeatherLable.text = "Min \(weather.main.tempMin.convertTemp(from: .kelvin, to: outputTempType))  Max \(weather.main.tempMax.convertTemp(from: .kelvin, to: outputTempType))"
         
-        self.tempWeatherLabel.text = weather.main.temp.convertTemp(from: .kelvin, to: .celsius)
+        self.tempWeatherLabel.text = weather.main.temp.convertTemp(from: .kelvin, to: outputTempType)
         
         if let iconName = weather.weather.first?.icon {
             self.iconImage.imageFromURL(urlString: Environment.current.baseURLImageString + "\(iconName)" + Environment.current.baseExtensionIcon)
