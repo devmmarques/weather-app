@@ -7,14 +7,17 @@
 //
 
 import UIKit
+import CoreLocation
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
-
+    
+    var location = CLLocationManager()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        self.setupLocationManager()
         return true
     }
 
@@ -32,6 +35,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
 
+    
+    private func setupLocationManager() {
+       guard CLLocationManager.locationServicesEnabled() == true else {
+           return
+       }
+       
+        self.location.delegate = self
+        self.location.requestWhenInUseAuthorization()
+        self.location.startUpdatingLocation()
+    }
 
 }
 
+extension AppDelegate: CLLocationManagerDelegate {
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        guard let location = locations.first else {
+            return
+        }
+        LocationManager.shared.sendLocation(location: location)
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        if status == .authorizedAlways || status == .authorizedWhenInUse {
+            guard let location = manager.location else { return }
+            LocationManager.shared.sendLocation(location: location)
+        }
+    }
+}
