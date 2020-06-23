@@ -42,7 +42,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
        }
        
         self.location.delegate = self
-        self.location.requestAlwaysAuthorization()
+        self.location.requestWhenInUseAuthorization()
         self.location.startUpdatingLocation()
     }
 

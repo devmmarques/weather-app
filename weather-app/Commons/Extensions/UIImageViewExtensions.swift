@@ -6,10 +6,14 @@ extension UIImageView {
         
         let activityIndicator = UIActivityIndicatorView(style: .medium)
         activityIndicator.frame = CGRect.init(x: 0, y: 0, width: self.frame.size.width, height: self.frame.size.height)
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
         activityIndicator.color = UIColor.gray
         activityIndicator.startAnimating()
         if self.image == nil{
             self.addSubview(activityIndicator)
+            activityIndicator
+                .centerXAnchor(equalTo: self.centerXAnchor)
+                .centerYAnchor(equalTo: self.centerYAnchor)
         }
         
         URLSession.shared.dataTask(with: NSURL(string: urlString)! as URL, completionHandler: { (data, response, error) -> Void in

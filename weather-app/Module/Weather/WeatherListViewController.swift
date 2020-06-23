@@ -21,6 +21,8 @@ final class WeatherListViewController: UIViewController {
         self.setupUI()
     }
     
+    private let refreshControl = UIRefreshControl()
+    
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
@@ -30,6 +32,12 @@ final class WeatherListViewController: UIViewController {
         self.tableView.register(WeatherViewCell.self)
         self.tableView.register(LoadingCell.self)
         self.tableView.register(ErrorViewCell.self)
+        if #available(iOS 10.0, *) {
+            tableView.refreshControl = refreshControl
+        } else {
+            tableView.addSubview(refreshControl)
+        }
+        refreshControl.addTarget(self, action: #selector(refreshWeatherData(_:)), for: .valueChanged)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -57,11 +65,16 @@ final class WeatherListViewController: UIViewController {
             }
         }
     }
+    
+    @objc private func refreshWeatherData(_ sender: Any) {
+        self.presenter?.viewDidLoad()
+    }
 }
 
 extension WeatherListViewController: WeatherListViewProtocol {
     
     func reloadData() {
+        self.refreshControl.endRefreshing()
         self.tableView.reloadData()
     }
     

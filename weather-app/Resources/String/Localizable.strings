@@ -9,3 +9,5 @@
 "emptyStateTitleWeather" = "Sem Previsão";
 "emptyStateDescriptionWeather" = "No momento não existe uma previsão de tempo para sua região.";
 "emptyStateLabel" = "- - -";
+"emptyStateTitleLocation" = "Sem localização";
+"emptyStateDescriptionLocation" = "Não foi possível encontrar sua localização, precisamos que autorize sua localização em configurações.";

@@ -1,12 +1,22 @@
 enum EmptyState {
   case weather
+  case location
   
   var title: String {
-    return L10n.emptyStateTitleWeather
+    switch self {
+    case .weather:
+        return L10n.emptyStateTitleWeather
+    case .location:
+        return L10n.emptyStateTitleLocation
+    }
   }
 
   var description: String {
-    return L10n.emptyStateDescriptionWeather
+    switch self {
+    case .weather:
+        return L10n.emptyStateDescriptionWeather
+    case .location:
+        return L10n.emptyStateDescriptionLocation
+    }
   }
-
 }

@@ -21,9 +21,9 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>Usamos sua localização pra buscar a previsão do tempo em sua região.</string>
+	<string>Permita sua localização para buscar a previsão do tempo em sua região.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Usamos sua localização pra buscar a previsão do tempo em sua região.</string>
+	<string>Permita sua localização para buscar a previsão do tempo em sua região.</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>

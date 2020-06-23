@@ -18,21 +18,26 @@ class WeatherListInteractor: WeatherListInputInteractorProtocol {
     
     func fetchWeather() {
         self.listWeather = [.loading];
-        self.service.fetchWeather(parameters: self.getParameters()) { [weak self] result in
-            guard let self = self else { return }
-            switch result {
-            case let .success(weatherResponse):
-                if weatherResponse.list.isEmpty {
-                   self.listWeather = [.error(.empty(.weather))]
-                } else {
-                    self.listWeather = weatherResponse.list.map({
-                        return ListCellType.cell(Weather(response: $0))
-                    })
+        
+        if let parameters = self.getParameters() {
+            self.service.fetchWeather(parameters: parameters) { [weak self] result in
+                guard let self = self else { return }
+                switch result {
+                case let .success(weatherResponse):
+                    if weatherResponse.list.isEmpty {
+                       self.listWeather = [.error(.empty(.weather))]
+                    } else {
+                        self.listWeather = weatherResponse.list.map({
+                            return ListCellType.cell(Weather(response: $0))
+                        })
+                    }
+                    self.presenter?.showWeather()
+                case let .failure(error):
+                    self.listWeather = [.error(error)]
                 }
-                self.presenter?.showWeather()
-            case let .failure(error):
-                self.listWeather = [.error(error)]
             }
+        } else {
+            self.listWeather = [.error(.empty(.location))]
         }
     }
     
@@ -46,9 +51,10 @@ class WeatherListInteractor: WeatherListInputInteractorProtocol {
     
     private func getParameters() -> [String: Any]? {
         let apiKey = Environment.current.baseApiKey
-        var parameters = self.getLocationUser()
-        parameters?["appid"] = apiKey
-        parameters?["cnt"] = 50
+        guard let location = self.getLocationUser() else { return nil}
+        var parameters = location
+        parameters["appid"] = apiKey
+        parameters["cnt"] = 50
         return parameters
     }
     

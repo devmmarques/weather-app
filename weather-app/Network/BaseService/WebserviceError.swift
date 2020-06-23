@@ -11,6 +11,7 @@ enum WebserviceError: Error {
     case unparseable
     case unknown
     case empty(EmptyState)
+    case location
 }
 
 extension WebserviceError: LocalizedError {

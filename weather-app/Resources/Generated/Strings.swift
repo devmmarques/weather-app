@@ -13,10 +13,14 @@ import Foundation
 internal enum L10n {
   /// Tente novamente
   internal static let buttonTryAgain = L10n.tr("Localizable", "buttonTryAgain")
+  /// Não foi possível encontrar sua localização, precisamos que autorize sua localização em configurações.
+  internal static let emptyStateDescriptionLocation = L10n.tr("Localizable", "emptyStateDescriptionLocation")
   /// No momento não existe uma previsão de tempo para sua região.
   internal static let emptyStateDescriptionWeather = L10n.tr("Localizable", "emptyStateDescriptionWeather")
   /// - - -
   internal static let emptyStateLabel = L10n.tr("Localizable", "emptyStateLabel")
+  /// Sem localização
+  internal static let emptyStateTitleLocation = L10n.tr("Localizable", "emptyStateTitleLocation")
   /// Sem Previsão
   internal static let emptyStateTitleWeather = L10n.tr("Localizable", "emptyStateTitleWeather")
   /// Não foi possível encontrar a nenhuma previsão para sua localização.
