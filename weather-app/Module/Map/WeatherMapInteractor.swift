@@ -22,7 +22,7 @@ final class WeatherMapInteractor: WeatherMapInputInteractorProtocol {
                 iconUrl = Environment.current.baseURLImageString + "\(iconName)" + Environment.current.baseExtensionIcon
             }
             
-            let weatherMap = WeatherMap(title: weather.name, locationName: weather.name, temp: weather.main.temp, iconUrl: iconUrl, coordinate: CLLocationCoordinate2D(latitude: weather.coord.latiture, longitude: weather.coord.longitude))
+            let weatherMap = WeatherMap(title: weather.name, locationName: weather.name, temp: weather.main.temp, iconUrl: iconUrl, unitTemp: self.typeUnitTemperature, coordinate: CLLocationCoordinate2D(latitude: weather.coord.latiture, longitude: weather.coord.longitude))
             listWeatherMap.append(weatherMap)
         }
         

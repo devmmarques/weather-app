@@ -28,8 +28,6 @@ class PopViewAnnotationView: MKPinAnnotationView {
         return label
     }()
     
-    var typeUnitTemperature: UnitTemperature?
-    
     override var annotation: MKAnnotation? {
         didSet {
             configureDetailView()
@@ -92,7 +90,7 @@ private extension PopViewAnnotationView {
 
     func configureDetailView() {
         guard let annotation = annotation as? WeatherMap else { return }
-        self.titleTemperature.text = annotation.temp.convertTemp(from: .kelvin, to: self.typeUnitTemperature ?? .celsius)
+        self.titleTemperature.text = annotation.temp.convertTemp(from: .kelvin, to: annotation.unitTemp)
         self.iconImage.imageFromURL(urlString: annotation.iconUrl)
     }
 }

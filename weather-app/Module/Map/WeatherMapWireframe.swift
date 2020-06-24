@@ -1,16 +1,7 @@
 import UIKit
 
-final class WeatherMapWireframe: NSObject {
+final class WeatherMapWireframe: NSObject, WWeatherMapWireframeProtocol {
     
-    
-    // MARK: - Viper Properties
-    
-    weak var view: WeatherMapViewController!
-    weak var presenter: WeatherMapPresenter!
- 
-}
-
-extension WeatherMapWireframe: WWeatherMapWireframeProtocol {
     
     func setupModularView(_ typeUnitTemperature: UnitTemperature = .celsius, weathers: [Weather]) -> WeatherMapViewController {
         let view = WeatherMapViewController()
@@ -25,7 +16,6 @@ extension WeatherMapWireframe: WWeatherMapWireframeProtocol {
         view.presenter = presenter
         interactor.presenter = presenter
         
-        self.view = view
         return view
     }
     

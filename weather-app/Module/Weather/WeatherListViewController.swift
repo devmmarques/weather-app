@@ -2,13 +2,12 @@ import UIKit
 
 final class WeatherListViewController: UIViewController {
     
-    var presenter: WeatherListPresenterProtocol?
-    
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.separatorStyle = .none
         tableView.backgroundColor = .white
+        tableView.allowsSelection = false
         return tableView
     }()
     
@@ -21,6 +20,7 @@ final class WeatherListViewController: UIViewController {
     }
     
     private let refreshControl = UIRefreshControl()
+    var presenter: WeatherListPresenterProtocol?
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent

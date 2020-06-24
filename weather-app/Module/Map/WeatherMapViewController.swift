@@ -4,16 +4,15 @@ import MapKit
 
 final class WeatherMapViewController: UIViewController {
     
-    
     private lazy var mapView: MKMapView = {
         let map = MKMapView(frame: .zero)
         map.translatesAutoresizingMaskIntoConstraints = false
         return map
     }()
     
-    var locationManager = CLLocationManager()
     var presenter: WeatherMapInputPresenterProtocol?
-    var oldPopViewTag: Int = 0
+    private var locationManager = CLLocationManager()
+    private var oldPopViewTag: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,6 +37,7 @@ final class WeatherMapViewController: UIViewController {
     
     private func setupUnitTemperature() {
         self.presenter?.changeUnitTemperature()
+        self.presenter?.fetch()
     }
     
     private func showListWeather() {
@@ -101,7 +101,6 @@ extension WeatherMapViewController: MKMapViewDelegate {
         view.setSelected(false, animated: false)
         
         let popViewAnnotation = PopViewAnnotationView(annotation: annotation, reuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
-        popViewAnnotation.typeUnitTemperature = self.presenter?.getUnitTemperature() ?? .celsius
         popViewAnnotation.translatesAutoresizingMaskIntoConstraints = false
         popViewAnnotation.tag = Int.random(in: 20..<30)
         self.oldPopViewTag = popViewAnnotation.tag
@@ -116,8 +115,9 @@ extension WeatherMapViewController: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
         
-        if let viewWithTag = self.view.viewWithTag(self.oldPopViewTag) {
+        if let viewWithTag = view.viewWithTag(self.oldPopViewTag) {
             viewWithTag.removeFromSuperview()
+            view.layoutIfNeeded()
         }
     }
     
@@ -125,6 +125,10 @@ extension WeatherMapViewController: MKMapViewDelegate {
 
 extension WeatherMapViewController: WeatherMapOutPutViewProtocol {
     func showMap(weathers: [WeatherMap]) {
+        if mapView.annotations.count > 0 {
+            let currentAnnotations = mapView.annotations
+            self.mapView.removeAnnotations(currentAnnotations)
+        }
         DispatchQueue.main.async {
            self.mapView.addAnnotations(weathers)
         }

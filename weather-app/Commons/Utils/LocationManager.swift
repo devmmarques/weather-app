@@ -11,7 +11,6 @@ class LocationManager {
     func sendLocation(location: CLLocation) {
         self.locationParameters = self.locationParameters(location: location)
     }
-
     
     private func locationParameters(location: CLLocation) -> [String: Any] {
         

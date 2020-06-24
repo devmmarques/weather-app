@@ -34,7 +34,7 @@ extension UIBarButtonItem {
     }
     
     convenience init(image: UIImage?, style: UIBarButtonItem.Style, closure: @escaping UIBarButtonItemTargetClosure) {
-        self.init(image: image, landscapeImagePhone: image, style: style, target: nil, action: nil) // landscapeImagePhone will
+        self.init(image: image, landscapeImagePhone: image, style: style, target: nil, action: nil) 
         targetClosure = closure
         action = #selector(UIBarButtonItem.closureAction)
     }
