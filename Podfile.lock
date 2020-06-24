@@ -1,0 +1,48 @@
+PODS:
+  - Alamofire (4.9.1)
+  - lottie-ios (3.1.8)
+  - Nimble (8.0.8)
+  - OHHTTPStubs/Core (9.0.0)
+  - OHHTTPStubs/Default (9.0.0):
+    - OHHTTPStubs/Core
+    - OHHTTPStubs/JSON
+    - OHHTTPStubs/NSURLSession
+    - OHHTTPStubs/OHPathHelpers
+  - OHHTTPStubs/JSON (9.0.0):
+    - OHHTTPStubs/Core
+  - OHHTTPStubs/NSURLSession (9.0.0):
+    - OHHTTPStubs/Core
+  - OHHTTPStubs/OHPathHelpers (9.0.0)
+  - OHHTTPStubs/Swift (9.0.0):
+    - OHHTTPStubs/Default
+  - Quick (2.2.0)
+  - SwiftGen (6.1.0)
+
+DEPENDENCIES:
+  - Alamofire (= 4.9.1)
+  - lottie-ios
+  - Nimble
+  - OHHTTPStubs/Swift
+  - Quick
+  - SwiftGen
+
+SPEC REPOS:
+  trunk:
+    - Alamofire
+    - lottie-ios
+    - Nimble
+    - OHHTTPStubs
+    - Quick
+    - SwiftGen
+
+SPEC CHECKSUMS:
+  Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
+  lottie-ios: 48fac6be217c76937e36e340e2d09cf7b10b7f5f
+  Nimble: 2da33c44adfde49552d4a6b3ef16039a45bf8dca
+  OHHTTPStubs: cb29d2a9d09a828ecb93349a2b0c64f99e0db89f
+  Quick: 7fb19e13be07b5dfb3b90d4f9824c855a11af40e
+  SwiftGen: f872ca75cbd17bf7103c17f13dcfa0d9a15667b0
+
+PODFILE CHECKSUM: d3a15e5bc2ebb16b8948d72b0586ab6909724a1b
+
+COCOAPODS: 1.9.1

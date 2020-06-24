@@ -1,0 +1,43 @@
+{
+    "coord": {
+        "lon": -46.69,
+        "lat": -23.68
+    },
+    "weather": [
+        {
+            "id": 803,
+            "main": "Clouds",
+            "description": "broken clouds",
+            "icon": "04n"
+        }
+    ],
+    "base": "stations",
+    "main": {
+        "temp": 291.96,
+        "feels_like": 290.49,
+        "temp_min": 289.82,
+        "temp_max": 293.15,
+        "pressure": 1022,
+        "humidity": 56
+    },
+    "visibility": 10000,
+    "wind": {
+        "speed": 2.1,
+        "deg": 300
+    },
+    "clouds": {
+        "all": 83
+    },
+    "dt": 1592531459,
+    "sys": {
+        "type": 1,
+        "id": 8446,
+        "country": "BR",
+        "sunrise": 1592473667,
+        "sunset": 1592512093
+    },
+    "timezone": -10800,
+    "id": 3464739,
+    "name": "Diadema",
+    "cod": 200
+}
