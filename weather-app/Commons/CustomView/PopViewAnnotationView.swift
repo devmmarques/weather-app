@@ -11,18 +11,28 @@ class PopViewAnnotationView: MKPinAnnotationView {
         return view
     }()
     
+    private lazy var iconImage: UIImageView = {
+       let image = UIImageView(frame: .zero)
+       image.translatesAutoresizingMaskIntoConstraints = false
+       image.contentMode = .scaleAspectFit
+       image.accessibilityIdentifier = "iconImage"
+       return image
+    }()
+    
     private lazy var titleTemperature: UILabel = {
         let label = UILabel(frame: .zero)
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = UIFont.boldSystemFont(ofSize: 20.0)
+        label.textAlignment = .center
         label.textColor = .black
         return label
     }()
     
+    var typeUnitTemperature: UnitTemperature?
     
     override var annotation: MKAnnotation? {
         didSet {
             configureDetailView()
-            
         }
     }
 
@@ -36,12 +46,20 @@ class PopViewAnnotationView: MKPinAnnotationView {
         super.init(coder: aDecoder)
         configure()
     }
+    
+    override func draw(_ rect: CGRect) {
+        super.draw(rect)
+
+        self.containerView.addPikeOnView(side: .Bottom)
+        self.containerView.applyShadow()
+    }
 }
 
 extension PopViewAnnotationView: CodeViewProtocol {
     
     func buildViewHierarchy() {
         self.addSubview(self.containerView)
+        self.containerView.addSubview(self.iconImage)
         self.containerView.addSubview(self.titleTemperature)
     }
     
@@ -52,11 +70,17 @@ extension PopViewAnnotationView: CodeViewProtocol {
             .trailingAnchor(equalTo: self.trailingAnchor)
             .bottomAnchor(equalTo: self.bottomAnchor)
         
-        self.titleTemperature
+        self.iconImage
             .topAnchor(equalTo: self.containerView.topAnchor)
             .leadingAnchor(equalTo: self.containerView.leadingAnchor)
-            .trailingAnchor(equalTo: self.containerView.trailingAnchor)
             .bottomAnchor(equalTo: self.containerView.bottomAnchor)
+            .heightAnchor(equalTo: 50.0)
+            .widthAnchor(equalTo: 50.0)
+        
+        self.titleTemperature
+            .centerYAnchor(equalTo: self.iconImage.centerYAnchor)
+            .leadingAnchor(equalTo: self.iconImage.trailingAnchor)
+            .trailingAnchor(equalTo: self.containerView.trailingAnchor)
     }
 }
 
@@ -67,8 +91,8 @@ private extension PopViewAnnotationView {
     }
 
     func configureDetailView() {
-        guard let annotation = annotation else { return }
-        self.titleTemperature.text = annotation.title ?? "TESTE"
-
+        guard let annotation = annotation as? WeatherMap else { return }
+        self.titleTemperature.text = annotation.temp.convertTemp(from: .kelvin, to: self.typeUnitTemperature ?? .celsius)
+        self.iconImage.imageFromURL(urlString: annotation.iconUrl)
     }
 }

@@ -98,18 +98,20 @@ extension WeatherMapViewController: MKMapViewDelegate {
         guard let annotation = view.annotation as? WeatherMap else {
                  return
         }
+        view.setSelected(false, animated: false)
         
         let popViewAnnotation = PopViewAnnotationView(annotation: annotation, reuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
+        popViewAnnotation.typeUnitTemperature = self.presenter?.getUnitTemperature() ?? .celsius
         popViewAnnotation.translatesAutoresizingMaskIntoConstraints = false
         popViewAnnotation.tag = Int.random(in: 20..<30)
         self.oldPopViewTag = popViewAnnotation.tag
         view.addSubview(popViewAnnotation)
-        
+
         popViewAnnotation
-            .bottomAnchor(equalTo: view.topAnchor, constant: -20.0)
+            .bottomAnchor(equalTo: view.topAnchor, constant: -10.0)
             .centerXAnchor(equalTo: view.centerXAnchor, constant: view.calloutOffset.x)
-            .widthAnchor(equalTo: 160.0)
-            .heightAnchor(equalTo: 70.0)
+            .widthAnchor(equalTo: 120.0)
+            .heightAnchor(equalTo: 50.0)
     }
     
     func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
@@ -123,11 +125,14 @@ extension WeatherMapViewController: MKMapViewDelegate {
 
 extension WeatherMapViewController: WeatherMapOutPutViewProtocol {
     func showMap(weathers: [WeatherMap]) {
-        self.mapView.addAnnotations(weathers)
+        DispatchQueue.main.async {
+           self.mapView.addAnnotations(weathers)
+        }
     }
     
     func showUnitTemperature() {
         self.changeIconNavigationButtonRight()
+        self.mapView.reloadInputViews()
     }
 }
 

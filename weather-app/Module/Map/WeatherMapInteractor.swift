@@ -17,7 +17,12 @@ final class WeatherMapInteractor: WeatherMapInputInteractorProtocol {
         var listWeatherMap: [WeatherMap] = []
         
         for weather in weathers {
-            let weatherMap = WeatherMap(title: weather.name, locationName: weather.name, temp: weather.main.temp, coordinate: CLLocationCoordinate2D(latitude: weather.coord.latiture, longitude: weather.coord.longitude))
+            var iconUrl = ""
+            if let iconName = weather.weather.first?.icon {
+                iconUrl = Environment.current.baseURLImageString + "\(iconName)" + Environment.current.baseExtensionIcon
+            }
+            
+            let weatherMap = WeatherMap(title: weather.name, locationName: weather.name, temp: weather.main.temp, iconUrl: iconUrl, coordinate: CLLocationCoordinate2D(latitude: weather.coord.latiture, longitude: weather.coord.longitude))
             listWeatherMap.append(weatherMap)
         }
         
