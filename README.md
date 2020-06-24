@@ -19,6 +19,12 @@ pod install
 # Supported Versions
 The minimum version required to run this app is **iOS 13.0.**
 
+# Views
+
+| List  | Maps |
+| ------------- | ------------- |
+| [List](https://github.com/devmmarques/weather-app/tree/master/prints/list.png) | [Maps](https://github.com/devmmarques/weather-app/tree/master/prints/Maps.png)  |
+
 
 ### Frameworks for testing
 - [Alamofire](https://github.com/Alamofire/Alamofire)
