@@ -23,7 +23,7 @@ The minimum version required to run this app is **iOS 13.0.**
 
 | List  | Maps |
 | ------------- | ------------- |
-| [List](https://github.com/devmmarques/weather-app/tree/master/prints/list.png) | [Maps](https://github.com/devmmarques/weather-app/tree/master/prints/Maps.png)  |
+| [List](https://github.com/devmmarques/weather-app/tree/master/prints/list.png) | [Maps](https://github.com/devmmarques/weather-app/tree/master/prints/maps.png)  |
 
 
 ### Frameworks for testing
