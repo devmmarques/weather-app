@@ -20,10 +20,11 @@ pod install
 The minimum version required to run this app is **iOS 13.0.**
 
 # Views
-
 | List  | Maps |
 | ------------- | ------------- |
-| [List](https://github.com/devmmarques/weather-app/tree/master/prints/list.png) | [Maps](https://github.com/devmmarques/weather-app/tree/master/prints/maps.png)  |
+| ![List](https://raw.github.com/devmmarques/weather-app/master/prints/list.png) | ![List](https://raw.github.com/devmmarques/weather-app/master/prints/maps.png)  |
+
+
 
 
 ### Frameworks for testing
