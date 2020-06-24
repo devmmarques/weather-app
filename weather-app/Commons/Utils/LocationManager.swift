@@ -5,6 +5,8 @@ class LocationManager {
 
     static let shared = LocationManager()
     var locationParameters: [String: Any]?
+    var currentLat: CLLocationDegrees?
+    var currentLong: CLLocationDegrees?
 
     func sendLocation(location: CLLocation) {
         self.locationParameters = self.locationParameters(location: location)
@@ -17,6 +19,9 @@ class LocationManager {
             "lat": location.coordinate.latitude,
             "lon": location.coordinate.longitude
         ]
+        self.currentLat = location.coordinate.latitude
+        self.currentLong = location.coordinate.longitude
+        
         return locationDictionary
     }
 }

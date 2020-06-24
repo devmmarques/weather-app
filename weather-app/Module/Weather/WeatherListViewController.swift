@@ -14,7 +14,6 @@ final class WeatherListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        WeatherListWireframe.createWeatherListModule(controller: self)
         self.presenter?.viewDidLoad()
         self.setupViews()
         self.setupTableView()
@@ -55,13 +54,18 @@ final class WeatherListViewController: UIViewController {
     
     private func setupUnitTemperature() {
         self.presenter?.changeUnitTemperature()
-        
+    }
+    
+    private func navigationMap() {
+        self.presenter?.showMapWeather()
     }
     
     private func changeIconNavigationButtonRight () {
         if let unitTemp = self.presenter?.getUnitTemperature() {
-            setupNavigationButtonRightWeather(iconType: unitTemp) {
+            setupNavigationButtonRightWeather(iconType: unitTemp, actionButtonTemperature: {
                 self.setupUnitTemperature()
+            }) {
+                self.navigationMap()
             }
         }
     }

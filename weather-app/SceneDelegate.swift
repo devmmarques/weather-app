@@ -18,7 +18,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         self.window = UIWindow(windowScene: scene)
         
-        let navigationController = UINavigationController(rootViewController: WeatherListViewController())
+        let navigationController = UINavigationController(rootViewController: WeatherListWireframe().setupModularView())
         self.window?.rootViewController = navigationController
         self.window?.makeKeyAndVisible()
     }

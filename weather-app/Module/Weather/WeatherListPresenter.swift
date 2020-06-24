@@ -29,6 +29,10 @@ final class WeatherListPresenter: WeatherListPresenterProtocol {
     func changeUnitTemperature() {
         self.interactor?.changeUnitTemperature()
     }
+    
+    func showMapWeather() {
+        self.wireframe?.showMapWeather(weathers: self.interactor?.getWeather() ?? [])
+    }
 }
 
 extension WeatherListPresenter: WeatherListOutPutInteractorProtocol {
