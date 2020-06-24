@@ -16,7 +16,7 @@ protocol WeatherListPresenterProtocol: class {
     func getWeather(with index: Int) -> ListCellType<Weather>?
     func getUnitTemperature() -> UnitTemperature
     func changeUnitTemperature()
-    func showMapWeather()
+    func showMapWeather(navigation: UINavigationController)
 }
 
 protocol WeatherListInputInteractorProtocol: class {
@@ -38,6 +38,6 @@ protocol WeatherListOutPutInteractorProtocol: class {
 
 protocol WeatherListWireframeProtocol: class {
     // Presenter -> Wireframe
-    func setupModularView() -> WeatherListViewController
-    func showMapWeather(weathers: [Weather])
+    func setupModularView(_ typeUnitTemperature: UnitTemperature) -> WeatherListViewController
+    func showMapWeather(typeUnitTemperature: UnitTemperature, navigation: UINavigationController, weathers: [Weather])
 }

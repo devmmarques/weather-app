@@ -29,9 +29,8 @@ final class WeatherListPresenter: WeatherListPresenterProtocol {
     func changeUnitTemperature() {
         self.interactor?.changeUnitTemperature()
     }
-    
-    func showMapWeather() {
-        self.wireframe?.showMapWeather(weathers: self.interactor?.getWeather() ?? [])
+    func showMapWeather(navigation: UINavigationController) {
+        self.wireframe?.showMapWeather(typeUnitTemperature: self.interactor?.typeUnitTemperature ?? .celsius, navigation: navigation, weathers: self.interactor?.getWeather() ?? [])
     }
 }
 

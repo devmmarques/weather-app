@@ -7,32 +7,15 @@ final class WeatherMapWireframe: NSObject {
     
     weak var view: WeatherMapViewController!
     weak var presenter: WeatherMapPresenter!
-    
-//
-//    init(weathers: [Weather]) {
-//        super.init()
-//
-//        let view = WeatherMapViewController()
-//        let interactor = WeatherMapInteractor(weathers: weathers)
-//        let presenter = WeatherMapPresenter()
-//
-//        presenter.interactor = interactor
-//        presenter.wireframe = self
-//        presenter.view = view
-//
-//        view.presenter = presenter
-//        interactor.presenter = presenter
-//
-//        self.view = view
-//        self.presenter = presenter
-//    }
+ 
 }
 
 extension WeatherMapWireframe: WWeatherMapWireframeProtocol {
     
-    func setupModularView(weathers: [Weather]) -> WeatherMapViewController {
+    func setupModularView(_ typeUnitTemperature: UnitTemperature = .celsius, weathers: [Weather]) -> WeatherMapViewController {
         let view = WeatherMapViewController()
         let interactor = WeatherMapInteractor(weathers: weathers)
+        interactor.typeUnitTemperature = typeUnitTemperature
         let presenter = WeatherMapPresenter()
                       
         presenter.interactor = interactor
@@ -46,4 +29,8 @@ extension WeatherMapWireframe: WWeatherMapWireframeProtocol {
         return view
     }
     
+    func showListWeater(navigation: UINavigationController, typeUnitTemperature: UnitTemperature) {
+        let listWeatherWireframe = WeatherListWireframe().setupModularView(typeUnitTemperature)
+        navigation.viewControllers = [listWeatherWireframe]
+    }
 }

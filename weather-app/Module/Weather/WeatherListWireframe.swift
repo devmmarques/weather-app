@@ -4,12 +4,13 @@ class WeatherListWireframe: NSObject, WeatherListWireframeProtocol {
     
     weak var view: WeatherListViewController!
    
-    func setupModularView() -> WeatherListViewController {
+    func setupModularView(_ typeUnitTemperature: UnitTemperature = .celsius) -> WeatherListViewController {
            
         let view = WeatherListViewController()
         let interactor = WeatherListInteractor()
+        interactor.typeUnitTemperature = typeUnitTemperature
         let presenter = WeatherListPresenter()
-
+        
         presenter.wireframe = self
         presenter.view = view
         presenter.interactor = interactor
@@ -21,9 +22,9 @@ class WeatherListWireframe: NSObject, WeatherListWireframeProtocol {
         return view
     }
     
-    func showMapWeather(weathers: [Weather]) {
-        let mapWireframe = WeatherMapWireframe().setupModularView(weathers: weathers)
-        view.navigationController?.pushViewController(mapWireframe, animated: true)
+    func showMapWeather(typeUnitTemperature: UnitTemperature, navigation: UINavigationController, weathers: [Weather]) {
+        let mapWireframe = WeatherMapWireframe().setupModularView(typeUnitTemperature, weathers: weathers)
+        navigation.viewControllers = [mapWireframe]
     }
     
 }

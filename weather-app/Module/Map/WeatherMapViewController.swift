@@ -13,26 +13,52 @@ final class WeatherMapViewController: UIViewController {
     
     var locationManager = CLLocationManager()
     var presenter: WeatherMapInputPresenterProtocol?
-    
+    var oldPopViewTag: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupViews()
+        self.setupUI()
         self.setupLocationManager()
-        self.mapView.delegate = self
-        self.mapView.register(PopViewAnnotationView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
         self.presenter?.fetch()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setupNavigationBar(with: .default)
+        
+        self.changeIconNavigationButtonRight()
+    }
+    
+    private func setupUI() {
+        self.title = L10n.titleNavigationWeather
+        self.mapView.delegate = self
+        self.mapView.register(PopViewAnnotationView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
+    }
+    
+    private func setupUnitTemperature() {
+        self.presenter?.changeUnitTemperature()
+    }
+    
+    private func showListWeather() {
+        guard let navigation = self.navigationController else { return }
+        self.presenter?.showListWeater(navigation: navigation)
+    }
+    
+    private func changeIconNavigationButtonRight () {
+        if let unitTemp = self.presenter?.getUnitTemperature() {
+            setupNavigationButtonRightWeather(iconImage: Asset.iconList.image, iconType: unitTemp, actionButtonTemperature: {
+                self.setupUnitTemperature()
+            }) {
+                self.showListWeather()
+            }
+        }
     }
     
     private func setupLocationManager() {
-        guard let currentLat = LocationManager.shared.currentLat, let currentLong = LocationManager.shared.currentLong else { return }
+        guard let currentLat = LocationManager.shared.currentLat,
+            let currentLong = LocationManager.shared.currentLong else { return }
         let initialLocation = CLLocation(latitude: currentLat, longitude: currentLong)
-//        self.mapView.centerToLocation(initialLocation
         self.setupZoomMap(initialLocation: initialLocation)
     }
     
@@ -46,6 +72,7 @@ final class WeatherMapViewController: UIViewController {
 }
 
 extension WeatherMapViewController: MKMapViewDelegate {
+    
 
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
 
@@ -53,17 +80,15 @@ extension WeatherMapViewController: MKMapViewDelegate {
           return nil
         }
 
-        let identifier = "artwork"
         var view: MKMarkerAnnotationView
 
-        if let dequeuedView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) as? MKMarkerAnnotationView {
+        if let dequeuedView = mapView.dequeueReusableAnnotationView(withIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier) as? MKMarkerAnnotationView {
           dequeuedView.annotation = annotation
           view = dequeuedView
         } else {
             view = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: identifier)
-            view.canShowCallout = true
-            view.calloutOffset = CGPoint(x: -5, y: 5)
-            view.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
+            view.canShowCallout = false
+            view.showsLargeContentViewer = false
         }
         return view
     }
@@ -76,14 +101,22 @@ extension WeatherMapViewController: MKMapViewDelegate {
         
         let popViewAnnotation = PopViewAnnotationView(annotation: annotation, reuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
         popViewAnnotation.translatesAutoresizingMaskIntoConstraints = false
+        popViewAnnotation.tag = Int.random(in: 20..<30)
+        self.oldPopViewTag = popViewAnnotation.tag
         view.addSubview(popViewAnnotation)
         
         popViewAnnotation
-            .bottomAnchor(equalTo: view.topAnchor)
+            .bottomAnchor(equalTo: view.topAnchor, constant: -20.0)
             .centerXAnchor(equalTo: view.centerXAnchor, constant: view.calloutOffset.x)
-            .widthAnchor(equalTo: 120.0)
-            .heightAnchor(equalTo: 40.0)
-
+            .widthAnchor(equalTo: 160.0)
+            .heightAnchor(equalTo: 70.0)
+    }
+    
+    func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
+        
+        if let viewWithTag = self.view.viewWithTag(self.oldPopViewTag) {
+            viewWithTag.removeFromSuperview()
+        }
     }
     
 }
@@ -92,18 +125,10 @@ extension WeatherMapViewController: WeatherMapOutPutViewProtocol {
     func showMap(weathers: [WeatherMap]) {
         self.mapView.addAnnotations(weathers)
     }
-}
-
-extension WeatherMapViewController: CLLocationManagerDelegate {
     
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        if let location = locations.last{
-            let center = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
-            let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
-            self.mapView.setRegion(region, animated: true)
-        }
+    func showUnitTemperature() {
+        self.changeIconNavigationButtonRight()
     }
-    
 }
 
 extension WeatherMapViewController: CodeViewProtocol {

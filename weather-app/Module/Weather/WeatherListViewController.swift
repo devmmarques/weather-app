@@ -57,12 +57,13 @@ final class WeatherListViewController: UIViewController {
     }
     
     private func navigationMap() {
-        self.presenter?.showMapWeather()
+        guard let navigation = self.navigationController else { return }
+        self.presenter?.showMapWeather(navigation: navigation)
     }
     
     private func changeIconNavigationButtonRight () {
         if let unitTemp = self.presenter?.getUnitTemperature() {
-            setupNavigationButtonRightWeather(iconType: unitTemp, actionButtonTemperature: {
+            setupNavigationButtonRightWeather(iconImage: Asset.icMaps.image, iconType: unitTemp, actionButtonTemperature: {
                 self.setupUnitTemperature()
             }) {
                 self.navigationMap()

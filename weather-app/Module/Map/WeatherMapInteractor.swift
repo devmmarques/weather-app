@@ -7,6 +7,8 @@ final class WeatherMapInteractor: WeatherMapInputInteractorProtocol {
     
     var weathers: [Weather]
     
+    var typeUnitTemperature: UnitTemperature = .celsius
+    
     init(weathers: [Weather]) {
         self.weathers = weathers
     }
@@ -20,5 +22,18 @@ final class WeatherMapInteractor: WeatherMapInputInteractorProtocol {
         }
         
         self.presenter?.showMap(weathers: listWeatherMap)
+    }
+    
+    func changeUnitTemperature() {
+        switch self.typeUnitTemperature {
+        case .celsius:
+            self.typeUnitTemperature = .fahrenheit
+        case .fahrenheit:
+            self.typeUnitTemperature = .celsius
+        default:
+            self.typeUnitTemperature = .celsius
+        }
+        
+        self.presenter?.showUnitTemperature()
     }
 }
