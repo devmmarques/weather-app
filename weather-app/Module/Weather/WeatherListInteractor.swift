@@ -6,18 +6,20 @@ class WeatherListInteractor: WeatherListInputInteractorProtocol {
     var typeUnitTemperature: UnitTemperature = .celsius
     let service: WeatherServiceProtocol
     
-    var listWeather: [ListCellType<Weather>] = [] {
+    private var listWeatherCell: [ListCellType<Weather>] = [] {
         didSet {
             self.presenter?.showWeather()
         }
     }
+    
+    private var listWeather: [Weather] = []
     
     init(service: WeatherServiceProtocol = WeatherService()) {
         self.service = service
     }
     
     func fetchWeather() {
-        self.listWeather = [.loading];
+        self.listWeatherCell = [.loading];
         
         if let parameters = self.getParameters() {
             self.service.fetchWeather(parameters: parameters) { [weak self] result in
@@ -25,28 +27,33 @@ class WeatherListInteractor: WeatherListInputInteractorProtocol {
                 switch result {
                 case let .success(weatherResponse):
                     if weatherResponse.list.isEmpty {
-                       self.listWeather = [.error(.empty(.weather))]
+                       self.listWeatherCell = [.error(.empty(.weather))]
                     } else {
-                        self.listWeather = weatherResponse.list.map({
+                        self.listWeatherCell = weatherResponse.list.map({
+                            self.listWeather.append(Weather(response: $0))
                             return ListCellType.cell(Weather(response: $0))
                         })
                     }
                     self.presenter?.showWeather()
                 case let .failure(error):
-                    self.listWeather = [.error(error)]
+                    self.listWeatherCell = [.error(error)]
                 }
             }
         } else {
-            self.listWeather = [.error(.empty(.location))]
+            self.listWeatherCell = [.error(.empty(.location))]
         }
     }
     
     func countListWeather() -> Int {
-        return self.listWeather.count
+        return self.listWeatherCell.count
+    }
+    
+    func getWeather() -> [Weather] {
+       return listWeather
     }
     
     func getWeather(with index: Int) -> ListCellType<Weather> {
-        return self.listWeather[index]
+        return self.listWeatherCell[index]
     }
     
     private func getParameters() -> [String: Any]? {
@@ -74,4 +81,5 @@ class WeatherListInteractor: WeatherListInputInteractorProtocol {
         
         self.presenter?.showUnitTemperature()
     }
+    
 }

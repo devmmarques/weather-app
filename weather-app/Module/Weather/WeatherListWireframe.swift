@@ -1,16 +1,30 @@
 import UIKit
 
-final class WeatherListWireframe: WeatherListWireframeProtocol {
+class WeatherListWireframe: NSObject, WeatherListWireframeProtocol {
     
-    
-    class func createWeatherListModule(controller: WeatherListViewController) {
-       let presenter: WeatherListPresenterProtocol & WeatherListOutPutInteractorProtocol = WeatherListPresenter()
+    weak var view: WeatherListViewController!
+   
+    func setupModularView(_ typeUnitTemperature: UnitTemperature = .celsius) -> WeatherListViewController {
+           
+        let view = WeatherListViewController()
+        let interactor = WeatherListInteractor()
+        interactor.typeUnitTemperature = typeUnitTemperature
+        let presenter = WeatherListPresenter()
         
-        controller.presenter = presenter
-        controller.presenter?.wireframe = WeatherListWireframe()
-        controller.presenter?.view = controller
-        controller.presenter?.interactor = WeatherListInteractor()
-        controller.presenter?.interactor?.presenter = presenter
+        presenter.wireframe = self
+        presenter.view = view
+        presenter.interactor = interactor
+
+        view.presenter = presenter
+        interactor.presenter = presenter
+
+        self.view = view
+        return view
+    }
+    
+    func showMapWeather(typeUnitTemperature: UnitTemperature, navigation: UINavigationController, weathers: [Weather]) {
+        let mapWireframe = WeatherMapWireframe().setupModularView(typeUnitTemperature, weathers: weathers)
+        navigation.viewControllers = [mapWireframe]
     }
     
 }

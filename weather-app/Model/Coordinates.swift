@@ -1,6 +1,6 @@
 struct Coordinates {
-    let latiture: Float
-    let longitude: Float
+    let latiture: Double
+    let longitude: Double
     
     init(response: CoordinatesResponseModel) {
         self.latiture = response.lat

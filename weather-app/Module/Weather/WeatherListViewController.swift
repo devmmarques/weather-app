@@ -2,19 +2,17 @@ import UIKit
 
 final class WeatherListViewController: UIViewController {
     
-    var presenter: WeatherListPresenterProtocol?
-    
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.separatorStyle = .none
         tableView.backgroundColor = .white
+        tableView.allowsSelection = false
         return tableView
     }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        WeatherListWireframe.createWeatherListModule(controller: self)
         self.presenter?.viewDidLoad()
         self.setupViews()
         self.setupTableView()
@@ -22,6 +20,7 @@ final class WeatherListViewController: UIViewController {
     }
     
     private let refreshControl = UIRefreshControl()
+    var presenter: WeatherListPresenterProtocol?
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
@@ -55,13 +54,19 @@ final class WeatherListViewController: UIViewController {
     
     private func setupUnitTemperature() {
         self.presenter?.changeUnitTemperature()
-        
+    }
+    
+    private func navigationMap() {
+        guard let navigation = self.navigationController else { return }
+        self.presenter?.showMapWeather(navigation: navigation)
     }
     
     private func changeIconNavigationButtonRight () {
         if let unitTemp = self.presenter?.getUnitTemperature() {
-            setupNavigationButtonRightWeather(iconType: unitTemp) {
+            setupNavigationButtonRightWeather(iconImage: Asset.icMaps.image, iconType: unitTemp, actionButtonTemperature: {
                 self.setupUnitTemperature()
+            }) {
+                self.navigationMap()
             }
         }
     }

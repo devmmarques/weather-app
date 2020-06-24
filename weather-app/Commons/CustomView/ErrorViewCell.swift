@@ -57,7 +57,6 @@ final class ErrorViewCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupViews()
         self.backgroundColor = .clear
-        
     }
     
     required init?(coder: NSCoder) {

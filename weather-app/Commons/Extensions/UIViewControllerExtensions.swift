@@ -33,7 +33,10 @@ extension UIViewController {
         navigationController.navigationBar.titleTextAttributes = textAttributes
     }
     
-    func setupNavigationButtonRightWeather(iconType: UnitTemperature = .celsius, completion: @escaping () -> ()) {
+    func setupNavigationButtonRightWeather(iconImage: UIImage,
+                                           iconType: UnitTemperature = .celsius,
+                                           actionButtonTemperature: @escaping () -> (),
+                                           actionButtonMap: @escaping () -> ()) {
         var symbol = ""
         
         switch iconType {
@@ -44,13 +47,15 @@ extension UIViewController {
         default:
             symbol = iconType.symbol
         }
+        
+        
         let buttonTemp = UIBarButtonItem(title: symbol, style: .done) { _ in
-            completion()
+            actionButtonTemperature()
         }
         buttonTemp.tintColor = .white
        
-        let buttonMap = UIBarButtonItem(image: Asset.icMaps.image, style: .done) { _ in
-            completion()
+        let buttonMap = UIBarButtonItem(image: iconImage, style: .done) { _ in
+            actionButtonMap()
         }
         buttonMap.tintColor = .white
        
